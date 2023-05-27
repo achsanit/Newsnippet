@@ -1,0 +1,79 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id "androidx.navigation.safeargs"
+    id 'kotlin-parcelize'
+}
+
+android {
+    namespace 'com.achsanit.newsnippet'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.achsanit.newsnippet"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+    implementation deps.androidx.core
+    implementation deps.androidx.activity
+    implementation deps.androidx.fragment
+    implementation deps.androidx.appCompat
+    implementation deps.androidx.constraintLayout
+    implementation deps.androidx.lifecycleRuntime
+    implementation deps.androidx.lifecycleLiveData
+    implementation deps.androidx.navigationFragment
+    implementation deps.androidx.navigationUI
+    implementation deps.androidx.lifecycleViewModel
+    implementation deps.androidx.legacySupport
+
+    implementation deps.google.materialComponents
+
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.gson
+    implementation deps.retrofit.logging
+
+    implementation deps.koin.core
+    implementation deps.koin.android
+
+    implementation deps.coroutines.core
+    implementation deps.coroutines.android
+
+    implementation deps.paging.runtime
+    implementation deps.paging.rxjava2
+
+    debugImplementation deps.chuckerDebug
+    releaseImplementation deps.chuckerRelease
+
+    testImplementation deps.unitTest.junit
+    testImplementation deps.unitTest.mockk
+
+    androidTestImplementation deps.androidTest.junitExt
+    androidTestImplementation deps.androidTest.espresso
+    androidTestImplementation deps.androidTest.expressoContrib
+}
