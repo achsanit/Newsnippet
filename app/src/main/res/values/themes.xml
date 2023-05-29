@@ -6,4 +6,12 @@
     </style>
 
     <style name="Theme.Newsnippet" parent="Base.Theme.Newsnippet"/>
+
+    <style name="roundedImageView" parent="Theme.Newsnippet">
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="roundedImageView.smallRounded" parent="roundedImageView">
+        <item name="cornerSize">8dp</item>
+    </style>
 </resources>

@@ -56,8 +56,6 @@ dependencies {
     implementation deps.androidx.legacySupport
 
     implementation deps.google.materialComponents
-//    implementation 'androidx.appcompat:appcompat:1.4.1'
-//    implementation 'com.google.android.material:material:1.5.0'
     implementation deps.retrofit.retrofit
     implementation deps.retrofit.gson
     implementation deps.retrofit.logging
@@ -73,6 +71,10 @@ dependencies {
 
     debugImplementation deps.chuckerDebug
     releaseImplementation deps.chuckerRelease
+
+    implementation deps.ui.coil
+    implementation deps.ui.shimmer
+    implementation deps.ui.lottie
 
     testImplementation deps.unitTest.junit
     testImplementation deps.unitTest.mockk

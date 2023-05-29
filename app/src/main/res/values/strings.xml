@@ -2,4 +2,8 @@
     <string name="app_name">Newsnippet</string>
     <string name="title_home">Home</string>
     <string name="title_bookmark">Bookmark</string>
+    <string name="title_input_keywords">Input Keywords…</string>
+    <string name="title_top_headlines">Top Headlines</string>
+    <string name="cd_news_image">news image</string>
+    <string name="cd_button_more">button more</string>
 </resources>
