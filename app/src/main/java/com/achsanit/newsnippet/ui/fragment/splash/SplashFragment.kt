@@ -36,7 +36,7 @@ class SplashFragment : Fragment() {
         handler.postDelayed({
             val action = SplashFragmentDirections.actionSplashFragmentToNavHome()
             findNavController().navigate(action)
-        },2000)
+        },3000)
     }
 
     override fun onDestroyView() {

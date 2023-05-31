@@ -10,7 +10,8 @@ import com.achsanit.newsnippet.databinding.ItemNewsBinding
 import com.achsanit.newsnippet.utils.setShimmerPlaceholder
 
 class NewsAdapter(
-    private val onClickItem: (NewsEntity) -> Unit
+    private val onClickItem: (NewsEntity) -> Unit,
+    private val onMoreClick: (NewsEntity) -> Unit
 ): RecyclerView.Adapter<NewsAdapter.ViewHolder>(){
     inner class ViewHolder(private val binding: ItemNewsBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(data: NewsEntity) {
@@ -26,6 +27,10 @@ class NewsAdapter(
                     }
                 }
                 tvSources.text = data.source
+
+                ivMore.setOnClickListener {
+                    onMoreClick(data)
+                }
 
                 root.setOnClickListener {
                     onClickItem(data)

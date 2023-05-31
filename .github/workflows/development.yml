@@ -24,7 +24,7 @@ jobs:
 
       - name: send message to Discord
         run: |
-          curl -H "Content-Type: application/json" -d '{"username": "Police Android Newsnippet", "content": "Hello <@&692365757698539571>, App Newsnippet **Development** berhasil dibuild :smiling_face_with_3_hearts:}' "https://discord.com/api/webhooks/1113471581985968149/P6cIfL5P1HN0rOL9ceEqE5t6CDTC0BoQb34yWx0C2ut6czutxL9iCKDE4knADaXcpDkm"
+          curl -H "Content-Type: application/json" -d '{"username": "Police Android Newsnippet", "content": "Hello <@&1113484261631213640>, App Newsnippet **Development** berhasil dibuild :smiling_face_with_3_hearts: "}' "https://discord.com/api/webhooks/1113471581985968149/P6cIfL5P1HN0rOL9ceEqE5t6CDTC0BoQb34yWx0C2ut6czutxL9iCKDE4knADaXcpDkm"
 
       - name: Add Action Status Discord
         uses: sarisia/actions-status-discord@v1

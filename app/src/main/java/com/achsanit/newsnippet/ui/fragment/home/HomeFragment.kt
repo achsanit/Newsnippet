@@ -30,9 +30,10 @@ class HomeFragment : Fragment() {
         }
     }
     private val newsAdapter: NewsAdapter by lazy {
-        NewsAdapter {
-            navigationToDetail(it)
-        }
+        NewsAdapter(
+            onMoreClick = {},
+            onClickItem = { navigationToDetail(it) }
+        )
     }
 
     override fun onCreateView(
