@@ -1,13 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragment.detail.DetailFragment">
 
-    <TextView
+    <RelativeLayout
+        android:id="@+id/custom_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="2dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ib_back_toolbar"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:background="?android:selectableItemBackground"
+            android:clickable="true"
+            android:contentDescription="@string/cd_message_back_button"
+            android:focusable="true"
+            android:src="@drawable/ic_arrow_left"
+            app:shapeAppearance="@style/roundedImageView.smallRounded"
+            app:tint="@color/white"
+            tools:ignore="TouchTargetSizeCheck,RedundantDescriptionCheck,DuplicateSpeakableTextCheck" />
+
+        <TextView
+            android:id="@+id/tv_title_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="32sp"
+            android:gravity="center"
+            android:text="@string/title_news_detail"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ib_share"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/cd_message_back_button"
+            android:src="@drawable/ic_share"
+            app:shapeAppearance="@style/roundedImageView.smallRounded"
+            app:tint="@color/white"
+            tools:ignore="TouchTargetSizeCheck,RedundantDescriptionCheck" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:clipToPadding="false"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/custom_toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_news_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Indonesia menang seagames dengan sangat menegangkan karena harus melalui masa extra time" />
+
+            <TextView
+                android:id="@+id/tv_sources_author"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/ib_bookmark"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_news_title"
+                tools:text="By Achsani, CNN Indonesia" />
+
+            <TextView
+                android:id="@+id/tv_date_published"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_sources_author"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_sources_author"
+                tools:text="Saturday, 29 may 2023" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ib_bookmark"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:background="?android:selectableItemBackground"
+                android:clickable="true"
+                android:contentDescription="@string/cd_message_back_button"
+                android:focusable="true"
+                android:padding="4dp"
+                android:src="@drawable/ic_bookmark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_news_title"
+                app:shapeAppearance="@style/roundedImageView.smallRounded"
+                tools:ignore="TouchTargetSizeCheck,RedundantDescriptionCheck" />
+
+            <ImageView
+                android:id="@+id/iv_news"
+                android:layout_width="0dp"
+                android:layout_height="220dp"
+                android:layout_marginTop="24dp"
+                android:background="?android:selectableItemBackground"
+                android:clickable="true"
+                android:contentDescription="@string/cd_message_back_button"
+                android:focusable="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_published"
+                tools:ignore="TouchTargetSizeCheck,RedundantDescriptionCheck"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_news"
+                tools:ignore="VisualLintLongText" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_open_portal"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/white"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:textSize="14sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/title_open_news_portal"
+                android:textColor="?android:attr/colorPrimary"
+                android:drawableEnd="@drawable/ic_foreign"
+                android:drawableTint="?android:attr/colorPrimary"
+                app:cornerRadius="14dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:strokeColor="?android:attr/colorPrimary"
+                tools:ignore="VisualLintButtonSize" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

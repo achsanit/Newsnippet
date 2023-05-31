@@ -17,7 +17,8 @@ object KoinInitializer {
                     viewModelModule,
                     networkModule,
                     apiModule,
-                    repositoryModule
+                    repositoryModule,
+                    localDbModule
                 )
             )
         }
