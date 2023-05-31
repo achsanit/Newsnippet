@@ -68,6 +68,10 @@ class DetailFragment : Fragment() {
                     Toast.makeText(requireContext(), "delete....", Toast.LENGTH_SHORT).show()
                 }
             }
+
+            ibShare.setOnClickListener {
+                shareNews(args.newsDetail)
+            }
         }
     }
 
@@ -95,6 +99,17 @@ class DetailFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun shareNews(data: NewsEntity) {
+        val sendIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            type = "text/plain"
+            putExtra(Intent.EXTRA_TEXT, "${data.title}\n \n${data.url}")
+        }
+
+        val shareIntent = Intent.createChooser(sendIntent,null)
+        startActivity(shareIntent)
     }
 
     private fun setButtonBookmark(isBookmark: Boolean) {
