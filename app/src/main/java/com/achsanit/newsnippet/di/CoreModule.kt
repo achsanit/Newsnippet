@@ -1,6 +1,8 @@
 package com.achsanit.newsnippet.di
 
+import androidx.room.Room
 import com.achsanit.newsnippet.BuildConfig
+import com.achsanit.newsnippet.data.local.NewsnippetDb
 import com.achsanit.newsnippet.data.network.NewsService
 import com.achsanit.newsnippet.utils.CustomInterceptor
 import com.chuckerteam.chucker.api.ChuckerCollector
@@ -47,4 +49,15 @@ val apiModule = module {
             .build()
         retrofit.create(NewsService::class.java)
     }
+}
+
+val localDbModule = module {
+    single {
+        Room.databaseBuilder(
+            androidContext(),
+            NewsnippetDb::class.java,
+            "newsnippet.db"
+        ).build()
+    }
+    factory{ get<NewsnippetDb>().bookmarkDao() }
 }

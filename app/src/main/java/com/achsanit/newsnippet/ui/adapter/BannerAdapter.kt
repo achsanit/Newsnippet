@@ -8,7 +8,9 @@ import com.achsanit.newsnippet.data.local.model.NewsEntity
 import com.achsanit.newsnippet.databinding.ItemTopHeadlinesBinding
 import com.achsanit.newsnippet.utils.setShimmerPlaceholder
 
-class BannerAdapter: RecyclerView.Adapter<BannerAdapter.ViewHolder>() {
+class BannerAdapter(
+    private val onClickItem: (NewsEntity) -> Unit
+): RecyclerView.Adapter<BannerAdapter.ViewHolder>() {
     inner class ViewHolder(
         private val binding: ItemTopHeadlinesBinding
     ): RecyclerView.ViewHolder(binding.root) {
@@ -17,6 +19,10 @@ class BannerAdapter: RecyclerView.Adapter<BannerAdapter.ViewHolder>() {
                 tvNewsTitle.text = data.title
                 ivNewsBanner.load(data.urlToImage) {
                     setShimmerPlaceholder()
+                }
+
+                root.setOnClickListener {
+                    onClickItem(data)
                 }
             }
         }

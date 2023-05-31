@@ -2,7 +2,7 @@ package com.achsanit.newsnippet.data.network
 
 import com.achsanit.newsnippet.data.local.model.NewsEntity
 import com.achsanit.newsnippet.utils.Resource
-import com.achsanit.newsnippet.utils.map
+import com.achsanit.newsnippet.utils.mapToNews
 import com.achsanit.newsnippet.utils.resourceMapper
 
 class RemoteDataSource(private val newsService: NewsService) {
@@ -10,7 +10,7 @@ class RemoteDataSource(private val newsService: NewsService) {
         query: HashMap<String, String>
     ): Resource<List<NewsEntity>?> {
         return resourceMapper {
-            newsService.getTopHeadlines(query).map()
+            newsService.getTopHeadlines(query).mapToNews()
         }
     }
 

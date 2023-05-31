@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
+import com.achsanit.newsnippet.data.local.model.NewsEntity
 import com.achsanit.newsnippet.databinding.FragmentHomeBinding
 import com.achsanit.newsnippet.ui.adapter.BannerAdapter
 import com.achsanit.newsnippet.ui.adapter.NewsAdapter
@@ -23,10 +25,14 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: HomeViewModel by viewModel()
     private val bannerAdapter: BannerAdapter by lazy {
-        BannerAdapter()
+        BannerAdapter {
+            navigationToDetail(it)
+        }
     }
     private val newsAdapter: NewsAdapter by lazy {
-        NewsAdapter()
+        NewsAdapter {
+            navigationToDetail(it)
+        }
     }
 
     override fun onCreateView(
@@ -61,6 +67,11 @@ class HomeFragment : Fragment() {
 
         obsListTopHeadlines()
         obsNewsByCategory()
+    }
+
+    private fun navigationToDetail(data: NewsEntity) {
+        val action = HomeFragmentDirections.actionNavHomeToDetailFragment(data)
+        findNavController().navigate(action)
     }
 
     private fun obsListTopHeadlines() {
@@ -142,8 +153,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 

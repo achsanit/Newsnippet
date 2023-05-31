@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:paddingStart="16dp"
     android:paddingEnd="16dp"
-    android:paddingTop="12dp"
+    android:paddingVertical="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?attr/selectableItemBackground"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -23,7 +26,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="12dp"
         android:ellipsize="end"
         android:maxLines="4"
         android:textColor="@color/black"
@@ -46,10 +48,14 @@
         tools:text="CNN" />
 
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"
+        app:shapeAppearance="@style/roundedImageView.smallRounded"
         android:src="@drawable/ic_menu"
         android:contentDescription="@string/cd_button_more"
         app:layout_constraintEnd_toEndOf="parent"

@@ -3,7 +3,7 @@ package com.achsanit.newsnippet.utils
 import com.achsanit.newsnippet.data.local.model.NewsEntity
 import com.achsanit.newsnippet.data.network.response.NewsResponse
 
-fun NewsResponse.map(): List<NewsEntity>? {
+fun NewsResponse.mapToNews(): List<NewsEntity>? {
     return this.articles?.map {
         NewsEntity(
             publishedAt = it?.publishedAt ?: "",

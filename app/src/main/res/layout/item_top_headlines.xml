@@ -47,11 +47,15 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Indonesia Menang sea games setelah 32 tahun menanti" />
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/cd_button_more"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"
+        app:shapeAppearance="@style/roundedImageView.smallRounded"
         android:src="@drawable/ic_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tv_news_title"
