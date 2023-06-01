@@ -10,4 +10,9 @@
         android:enabled="true"
         android:icon="@drawable/selector_ic_bookmark"
         android:title="@string/title_bookmark"/>
+    <item
+        android:id="@+id/nav_profile"
+        android:enabled="true"
+        android:icon="@drawable/selector_nav_profile"
+        android:title="@string/title_profile"/>
 </menu>
