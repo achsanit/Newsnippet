@@ -24,13 +24,13 @@ jobs:
 
       - name: send message to Discord
         run: |
-          curl -H "Content-Type: application/json" -d '{"username": "Police Android Newsnippet", "content": "Hello <@692365757698539571>, App Newsnippet **Development** berhasil dibuild :smiling_face_with_3_hearts: "}' "https://discord.com/api/webhooks/1113488327706955806/SNXt_SV_CCylEeheBEjPHAjF9OGmADy_ngmD-Md8kuZDEMDqmBFyXy4_IPFc--5n0rPF"
+          curl -H "Content-Type: application/json" -d '{"username": "Police Android Newsnippet", "content": "Hello <@692365757698539571>, App Newsnippet **Development** berhasil dibuild :smiling_face_with_3_hearts: "}' "https://discord.com/api/webhooks/1113924420281585694/cQE24jJ7dgJmWg-GmzTMAagBURZH5vmElRP_PSy-5B2_MqS_STooB-g6kdghN2JyNTZ6"
 
       - name: Add Action Status Discord
         uses: sarisia/actions-status-discord@v1
         if: always()
         with:
-          webhook: https://discord.com/api/webhooks/1113488327706955806/SNXt_SV_CCylEeheBEjPHAjF9OGmADy_ngmD-Md8kuZDEMDqmBFyXy4_IPFc--5n0rPF
+          webhook: https://discord.com/api/webhooks/1113924420281585694/cQE24jJ7dgJmWg-GmzTMAagBURZH5vmElRP_PSy-5B2_MqS_STooB-g6kdghN2JyNTZ6
           title: "Build Dev"
           description: "App Newsnippet Build Development"
           color: 0x0000ff
@@ -39,4 +39,4 @@ jobs:
       - name: Notify job failed to Build
         if: ${{ failure() }}
         run: |
-          curl -H "Content-Type: application/json" -d '{"username": "Police Android Newsnippet", "content": "Hello <@692365757698539571>, App Newsnippet **Development** failed to build 😔}' "https://discord.com/api/webhooks/1113488327706955806/SNXt_SV_CCylEeheBEjPHAjF9OGmADy_ngmD-Md8kuZDEMDqmBFyXy4_IPFc--5n0rPF"
+          curl -H "Content-Type: application/json" -d '{"username": "Police Android Newsnippet", "content": "Hello <@692365757698539571>, App Newsnippet **Development** failed to build 😔}' "https://discord.com/api/webhooks/1113924420281585694/cQE24jJ7dgJmWg-GmzTMAagBURZH5vmElRP_PSy-5B2_MqS_STooB-g6kdghN2JyNTZ6"

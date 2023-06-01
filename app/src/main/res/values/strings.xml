@@ -17,4 +17,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_delete">Delete</string>
     <string name="title_share">Share</string>
+    <string name="text_name">Achsani Taqwim</string>
+    <string name="text_username_github">achsanit</string>
+    <string name="text_email">achsanit87@gmail.com</string>
+    <string name="title_profile">Profile</string>
+    <string name="cd_avatar_image">avatar image</string>
+    <string name="cd_github_icon">github icon</string>
+    <string name="cd_gmail_icon">gmail icon</string>
 </resources>
