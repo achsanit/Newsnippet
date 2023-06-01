@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             when(destination.id) {
                 R.id.nav_home -> setUpBottomNav(true)
                 R.id.nav_bookmark -> setUpBottomNav(true)
+                R.id.nav_profile -> setUpBottomNav(true)
                 else -> setUpBottomNav(false)
             }
         }

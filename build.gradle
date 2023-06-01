@@ -12,6 +12,7 @@ buildscript {
         classpath deps.gradle.kotlinPlugin
 
         classpath deps.androidXClasspath.navigationSafeArgs
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.20'
     }
 }
 

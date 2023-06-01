@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-android'
     id "androidx.navigation.safeargs"
     id 'kotlin-parcelize'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -30,11 +31,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
     buildFeatures {
         viewBinding true
@@ -56,14 +57,17 @@ dependencies {
     implementation deps.androidx.legacySupport
 
     implementation deps.google.materialComponents
-//    implementation 'androidx.appcompat:appcompat:1.4.1'
-//    implementation 'com.google.android.material:material:1.5.0'
     implementation deps.retrofit.retrofit
     implementation deps.retrofit.gson
     implementation deps.retrofit.logging
 
     implementation deps.koin.core
     implementation deps.koin.android
+
+    implementation deps.room.runtime
+    implementation deps.room.ktx
+    implementation deps.room.rxjava2
+    kapt deps.room.compiler
 
     implementation deps.coroutines.core
     implementation deps.coroutines.android
@@ -74,10 +78,16 @@ dependencies {
     debugImplementation deps.chuckerDebug
     releaseImplementation deps.chuckerRelease
 
+    implementation deps.ui.coil
+    implementation deps.ui.shimmer
+    implementation deps.ui.lottie
+
     testImplementation deps.unitTest.junit
     testImplementation deps.unitTest.mockk
 
     androidTestImplementation deps.androidTest.junitExt
     androidTestImplementation deps.androidTest.espresso
     androidTestImplementation deps.androidTest.expressoContrib
+
+    implementation deps.javaAnotation
 }

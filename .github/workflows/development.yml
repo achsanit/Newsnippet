@@ -1,0 +1,42 @@
+name: Development deploy to app distribution
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: set up JDK 17
+        uses: actions/setup-java@v1
+        with:
+          java-version: 17
+          cache: gradle
+
+      - name: Build Debug
+        run: ./gradlew assembleDebug
+
+      - name: send message to Discord
+        run: |
+          curl -H "Content-Type: application/json" -d '{"username": "Police Android Newsnippet", "content": "Hello <@692365757698539571>, App Newsnippet **Development** berhasil dibuild :smiling_face_with_3_hearts: "}' "https://discord.com/api/webhooks/1113924420281585694/cQE24jJ7dgJmWg-GmzTMAagBURZH5vmElRP_PSy-5B2_MqS_STooB-g6kdghN2JyNTZ6"
+
+      - name: Add Action Status Discord
+        uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: https://discord.com/api/webhooks/1113924420281585694/cQE24jJ7dgJmWg-GmzTMAagBURZH5vmElRP_PSy-5B2_MqS_STooB-g6kdghN2JyNTZ6
+          title: "Build Dev"
+          description: "App Newsnippet Build Development"
+          color: 0x0000ff
+          username: Police Android Newsnippet
+
+      - name: Notify job failed to Build
+        if: ${{ failure() }}
+        run: |
+          curl -H "Content-Type: application/json" -d '{"username": "Police Android Newsnippet", "content": "Hello <@692365757698539571>, App Newsnippet **Development** failed to build 😔}' "https://discord.com/api/webhooks/1113924420281585694/cQE24jJ7dgJmWg-GmzTMAagBURZH5vmElRP_PSy-5B2_MqS_STooB-g6kdghN2JyNTZ6"

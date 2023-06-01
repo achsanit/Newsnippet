@@ -3,16 +3,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/nav_home">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/nav_home"
         android:name="com.achsanit.newsnippet.ui.fragment.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/nav_bookmark"
         android:name="com.achsanit.newsnippet.ui.fragment.bookmark.BookmarkFragment"
         android:label="fragment_bookmark"
-        tools:layout="@layout/fragment_bookmark" />
+        tools:layout="@layout/fragment_bookmark" >
+        <action
+            android:id="@+id/action_nav_bookmark_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.achsanit.newsnippet.ui.fragment.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="newsDetail"
+            app:argType="com.achsanit.newsnippet.data.local.model.NewsEntity" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.achsanit.newsnippet.ui.fragment.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_nav_home"
+            app:destination="@id/nav_home"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.achsanit.newsnippet.ui.fragment.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

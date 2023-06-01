@@ -1,7 +1,10 @@
 package com.achsanit.newsnippet.di
 
+import androidx.room.Room
 import com.achsanit.newsnippet.BuildConfig
+import com.achsanit.newsnippet.data.local.NewsnippetDb
 import com.achsanit.newsnippet.data.network.NewsService
+import com.achsanit.newsnippet.utils.CustomInterceptor
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import okhttp3.OkHttpClient
@@ -13,8 +16,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val networkModule = module {
+    single { CustomInterceptor() }
     single {
+        val customInterceptor: CustomInterceptor = get()
         val client = OkHttpClient.Builder()
+            .addInterceptor(customInterceptor)
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .connectTimeout(1, TimeUnit.MINUTES)
             .readTimeout(1, TimeUnit.MINUTES)
@@ -43,4 +49,15 @@ val apiModule = module {
             .build()
         retrofit.create(NewsService::class.java)
     }
+}
+
+val localDbModule = module {
+    single {
+        Room.databaseBuilder(
+            androidContext(),
+            NewsnippetDb::class.java,
+            "newsnippet.db"
+        ).build()
+    }
+    factory{ get<NewsnippetDb>().newsnippetDao() }
 }
