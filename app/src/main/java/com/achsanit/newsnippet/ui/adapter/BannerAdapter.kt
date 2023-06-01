@@ -5,7 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.achsanit.newsnippet.data.local.model.NewsEntity
+import com.achsanit.newsnippet.data.local.model.TopHeadlinesEntity
 import com.achsanit.newsnippet.databinding.ItemTopHeadlinesBinding
+import com.achsanit.newsnippet.utils.mapToNewsEntity
 import com.achsanit.newsnippet.utils.setShimmerPlaceholder
 
 class BannerAdapter(
@@ -14,7 +16,7 @@ class BannerAdapter(
     inner class ViewHolder(
         private val binding: ItemTopHeadlinesBinding
     ): RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: NewsEntity) {
+        fun bind(data: TopHeadlinesEntity) {
             with(binding) {
                 tvNewsTitle.text = data.title
                 ivNewsBanner.load(data.urlToImage) {
@@ -22,7 +24,7 @@ class BannerAdapter(
                 }
 
                 root.setOnClickListener {
-                    onClickItem(data)
+                    onClickItem(data.mapToNewsEntity())
                 }
             }
         }
@@ -36,9 +38,9 @@ class BannerAdapter(
         return ViewHolder(view)
     }
 
-    private val listNews = ArrayList<NewsEntity>()
+    private val listNews = ArrayList<TopHeadlinesEntity>()
 
-    fun submitData(data: List<NewsEntity>) {
+    fun submitData(data: List<TopHeadlinesEntity>) {
         listNews.clear()
         listNews.addAll(data)
         notifyDataSetChanged()

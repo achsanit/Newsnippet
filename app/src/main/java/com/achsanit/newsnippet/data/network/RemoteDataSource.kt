@@ -1,17 +1,17 @@
 package com.achsanit.newsnippet.data.network
 
-import com.achsanit.newsnippet.data.local.model.NewsEntity
-import com.achsanit.newsnippet.utils.Resource
-import com.achsanit.newsnippet.utils.mapToNews
-import com.achsanit.newsnippet.utils.resourceMapper
+import com.achsanit.newsnippet.data.network.response.NewsResponse
+import com.achsanit.newsnippet.utils.ApiResponse
+import kotlinx.coroutines.flow.Flow
 
 class RemoteDataSource(private val newsService: NewsService) {
     suspend fun getNews(
         query: HashMap<String, String>
-    ): Resource<List<NewsEntity>?> {
-        return resourceMapper {
-            newsService.getTopHeadlines(query).mapToNews()
-        }
-    }
+    ): Flow<ApiResponse<NewsResponse>> =
+        object : CallApiAdapter<NewsResponse>() {
+            override suspend fun createCall(): NewsResponse {
+                return newsService.getNews(query)
+            }
+        }.asFlow()
 
 }

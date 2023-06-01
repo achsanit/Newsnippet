@@ -59,5 +59,5 @@ val localDbModule = module {
             "newsnippet.db"
         ).build()
     }
-    factory{ get<NewsnippetDb>().bookmarkDao() }
+    factory{ get<NewsnippetDb>().newsnippetDao() }
 }

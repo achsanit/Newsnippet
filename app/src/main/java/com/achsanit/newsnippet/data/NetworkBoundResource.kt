@@ -1,5 +1,7 @@
-package com.achsanit.newsnippet.utils
+package com.achsanit.newsnippet.data
 
+import com.achsanit.newsnippet.utils.ApiResponse
+import com.achsanit.newsnippet.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emitAll
 import kotlinx.coroutines.flow.first
