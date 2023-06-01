@@ -12,6 +12,7 @@ import com.achsanit.newsnippet.data.local.model.NewsEntity
 import com.achsanit.newsnippet.databinding.FragmentBookmarkBinding
 import com.achsanit.newsnippet.ui.adapter.NewsAdapter
 import com.achsanit.newsnippet.ui.fragment.modal.BookmarkBottomSheetFragment
+import com.achsanit.newsnippet.utils.mapToNewsEntity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BookmarkFragment : Fragment() {
@@ -57,6 +58,10 @@ class BookmarkFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext())
                 setHasFixedSize(true)
             }
+
+            ibTrash.setOnClickListener {
+                viewModel.deleteAllBookmarks()
+            }
         }
     }
 
@@ -79,7 +84,7 @@ class BookmarkFragment : Fragment() {
             } else {
                 binding.clNoBookmarks.visibility = View.GONE
                 binding.rvBookmark.visibility = View.VISIBLE
-                newsAdapter.submitData(it)
+                newsAdapter.submitData(it.mapToNewsEntity())
             }
         }
     }

@@ -47,8 +47,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getBanner()
-        viewModel.getNewsByCategory(newsCategories[0])
+        getTopHeadlines()
+        getNewsByCategory(newsCategories[0])
 
         addCategoryToChip(newsCategories)
 
@@ -62,12 +62,9 @@ class HomeFragment : Fragment() {
 
             chipCategory.setOnCheckedStateChangeListener { _, _ ->
                 val selectedChipText = binding.chipCategory.findViewById<Chip>(chipCategory.checkedChipId).text.toString()
-                viewModel.getNewsByCategory(selectedChipText)
+                getNewsByCategory(selectedChipText)
             }
         }
-
-        obsListTopHeadlines()
-        obsNewsByCategory()
     }
 
     private fun navigationToDetail(data: NewsEntity) {
@@ -75,8 +72,8 @@ class HomeFragment : Fragment() {
         findNavController().navigate(action)
     }
 
-    private fun obsListTopHeadlines() {
-        viewModel.listBanner.observe(viewLifecycleOwner) { result ->
+    private fun getTopHeadlines() {
+        viewModel.getBanner().observe(viewLifecycleOwner) { result ->
             when(result) {
                 is Resource.Loading -> {
                     binding.pbLoadingVp.visibility = View.VISIBLE
@@ -94,21 +91,25 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun obsNewsByCategory() {
-        viewModel.listNewsByCategory.observe(viewLifecycleOwner) { result ->
-            when(result) {
-                is Resource.Loading -> {
-                    binding.pbLoadingRv.visibility = View.VISIBLE
+    private fun getNewsByCategory(category: String) {
+        viewModel.getNewsByCategory(category).observe(viewLifecycleOwner) { result ->
+            obsNewsByCategory(result)
+        }
+    }
+
+    private fun obsNewsByCategory(result: Resource<List<NewsEntity>>) {
+        when(result) {
+            is Resource.Loading -> {
+                binding.pbLoadingRv.visibility = View.VISIBLE
+            }
+            is Resource.Success -> {
+                binding.pbLoadingRv.visibility = View.GONE
+                result.data?.let {
+                    newsAdapter.submitData(it)
                 }
-                is Resource.Success -> {
-                    binding.pbLoadingRv.visibility = View.GONE
-                    result.data?.let {
-                        newsAdapter.submitData(it)
-                    }
-                }
-                else -> {
-                    binding.pbLoadingRv.visibility = View.GONE
-                }
+            }
+            else -> {
+                binding.pbLoadingRv.visibility = View.GONE
             }
         }
     }

@@ -9,7 +9,7 @@ interface NewsService {
      *  Get headlines news
      */
     @GET("top-headlines")
-    suspend fun getTopHeadlines(
+    suspend fun getNews(
         @QueryMap queryMap: HashMap<String, String>
     ): NewsResponse
 

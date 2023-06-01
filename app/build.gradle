@@ -88,4 +88,6 @@ dependencies {
     androidTestImplementation deps.androidTest.junitExt
     androidTestImplementation deps.androidTest.espresso
     androidTestImplementation deps.androidTest.expressoContrib
+
+    implementation deps.javaAnotation
 }

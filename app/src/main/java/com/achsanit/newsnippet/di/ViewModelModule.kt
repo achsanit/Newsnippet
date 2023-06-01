@@ -18,5 +18,5 @@ val viewModelModule = module {
 val repositoryModule = module {
     single { RemoteDataSource(get()) }
     single { LocalDataSource(get()) }
-    single { NewsRepository(get(), get()) }
+    single { NewsRepository(get(), get(), get()) }
 }

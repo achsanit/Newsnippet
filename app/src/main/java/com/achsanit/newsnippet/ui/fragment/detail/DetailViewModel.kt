@@ -4,7 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.achsanit.newsnippet.data.NewsRepository
+import com.achsanit.newsnippet.data.local.model.BookmarkEntity
 import com.achsanit.newsnippet.data.local.model.NewsEntity
+import com.achsanit.newsnippet.utils.mapToBookmark
 import kotlinx.coroutines.launch
 
 class DetailViewModel(
@@ -13,11 +15,11 @@ class DetailViewModel(
 
     fun addBookmark(data: NewsEntity) {
         viewModelScope.launch {
-            newsRepository.addBookmark(data)
+            newsRepository.addBookmark(data.mapToBookmark())
         }
     }
 
-    fun getBookmarkByTitle(title: String): LiveData<NewsEntity> {
+    fun getBookmarkByTitle(title: String): LiveData<BookmarkEntity> {
         return newsRepository.getBookmarkByTitle(title)
     }
 

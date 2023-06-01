@@ -30,7 +30,7 @@
             android:textSize="20sp" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ib_share"
+            android:id="@+id/ib_trash"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_alignParentEnd="true"
@@ -83,7 +83,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_add_bookmark"
-            android:text="@string/text_message_no_bookmarks" />
+            android:text="@string/text_message_no_bookmarks"
+            tools:ignore="VisualLintLongText" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
