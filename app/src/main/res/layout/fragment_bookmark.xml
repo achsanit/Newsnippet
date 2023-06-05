@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.bookmark.BookmarkFragment">
 
+
+
     <RelativeLayout
         android:id="@+id/custom_toolbar"
         android:layout_width="match_parent"
